@@ -1,0 +1,64 @@
+================================================================================
+HYPOTHESIS 2: DETAILED EVALUATION REPORT
+================================================================================
+
+MODEL ARCHITECTURE:
+  - Base: U-Net (7.8M parameters)
+  - Encoder: 4 downsampling blocks (64→128→256→512)
+  - Decoder: 4 upsampling blocks with skip connections
+  - Output: Single channel sigmoid (256x256)
+
+TRAINING CONFIGURATION:
+  - Loss: Focal (0.3) + Dice (0.7)
+  - Optimizer: Adam (lr=1e-3, weight_decay=1e-4)
+  - Scheduler: ReduceLROnPlateau (patience=5, factor=0.5)
+  - Early Stopping: patience=8
+  - Batch Size: 8
+  - Epochs: 50 (trained for 50)
+
+DATA PREPROCESSING:
+  ✓ CLAHE contrast enhancement (clipLimit=2.0)
+  ✓ Filled masks (25-28% coverage)
+  ✓ Resize to 256x256
+  ✓ Normalization to [0,1]
+
+DATA AUGMENTATION (Training Only):
+  ✓ Horizontal flip (50%)
+  ✓ Vertical flip (50%)
+  ✓ Rotation ±15° (50%)
+  ✓ Brightness ±20% (30%)
+  ✓ Gaussian noise σ=5 (20%)
+  ✓ Zoom 0.9-1.1 (20%)
+
+TRAINING RESULTS:
+  - Best Validation Loss: 0.0350 (epoch 44)
+  - Final Train Loss: 0.0356
+  - Final Val Loss: 0.0443
+  - Training Time: 24.0 minutes
+
+TEST SET PERFORMANCE:
+  - Average Dice: 0.9575 ± 0.0550
+  - Average IoU:  0.9229 ± 0.0844
+  - Test Samples: 63
+
+POST-PROCESSING:
+  ✓ Threshold at 0.5
+  ✓ Keep largest connected component
+  ✓ Morphological closing (5x5 kernel)
+
+ELLIPSE FITTING:
+  ✓ cv2.fitEllipse on contours
+  ✓ Major axis endpoints = biometry points
+
+KEY IMPROVEMENTS OVER H1:
+  1. Filled masks (+2488% Dice improvement!)
+  2. Focal loss (better for imbalance)
+  3. Heavy augmentation (prevents overfitting)
+  4. Weight decay regularization
+
+CONCLUSION:
+  ✅ EXCELLENT performance (Dice=0.958)
+  ✅ Recommended for deployment
+  ✅ Demonstrates critical importance of data quality
+
+================================================================================

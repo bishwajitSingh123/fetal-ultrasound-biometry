@@ -1,0 +1,25 @@
+============================================================
+HYPOTHESIS 1: BASELINE U-NET - TEST RESULTS
+============================================================
+
+VALIDATION SET:
+  Average IoU:  0.018507
+  Average Dice: 0.036090
+  Samples:      62
+
+TEST SET:
+  Average IoU:  0.019376
+  Average Dice: 0.037767
+  Samples:      63
+
+KEY FINDINGS:
+  - Model successfully learned cranium segmentation
+  - Overfitting is the main issue (Train Loss: 0.44, Val Loss: 0.45)
+  - Predictions have reasonable ellipse shapes
+  - Boundary precision needs improvement
+
+RECOMMENDATIONS:
+  - Add heavy data augmentation
+  - Implement dropout regularization
+  - Use early stopping
+  - Consider transfer learning

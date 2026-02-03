@@ -1,0 +1,26 @@
+============================================================
+HYPOTHESIS 2: DETAILED TEST REPORT
+============================================================
+
+TEST SET METRICS:
+  IoU:  0.922856 ± 0.084366
+  Dice: 0.957477 ± 0.054960
+  Samples: 63
+
+COMPARISON WITH HYPOTHESIS 1:
+  H1 Dice: 0.0370
+  H2 Dice: 0.9575
+  Improvement: 2487.8%
+
+KEY IMPROVEMENTS IN H2:
+  1. Filled masks (vs boundary-only)
+  2. Focal + Dice loss (vs BCE + Dice)
+  3. Heavy augmentation (6 types)
+  4. Post-processing with morphology
+  5. Weight decay regularization
+
+RECOMMENDATIONS FOR H3:
+  - Pre-trained encoder (ResNet34/EfficientNet)
+  - Attention mechanisms (CBAM/SE blocks)
+  - Multi-scale feature fusion
+  - Test-time augmentation

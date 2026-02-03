@@ -1,0 +1,55 @@
+# =============================================
+# Python
+# =============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyo
+
+# Virtual Environments
+venv/
+env/
+.env/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# =============================================
+# IDE & Editor
+# =============================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# =============================================
+# OS Files
+# =============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =============================================
+# Logs & Temp
+# =============================================
+*.log
+logs/
+temp/
+tmp/
+
+# =============================================
+# Distribution
+# =============================================
+dist/
+build/
+*.egg-info/
+
+# =============================================
+# NOTE: .pth model files are NOT ignored here.
+# Specific models are kept intentionally.
+# Redundant models have been deleted manually.
+# Git LFS handles files > 100MB.
+# =============================================
